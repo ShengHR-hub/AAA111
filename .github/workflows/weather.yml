@@ -4,7 +4,7 @@ on:
   schedule:
     # 北京时间 7:00 = UTC 23:00（前一天）
     - cron: "0 23 * * *"
-  workflow_dispatch:  # 支持手动触发
+  workflow_dispatch:
 
 jobs:
   send-weather:
@@ -22,7 +22,6 @@ jobs:
 
       - name: 推送天气
         env:
-          WECOM_CORPID: ${{ secrets.WECOM_CORPID }}
-          WECOM_SECRET: ${{ secrets.WECOM_SECRET }}
-          WECOM_AGENTID: ${{ secrets.WECOM_AGENTID }}
+          WXPUSHER_APPTOKEN: ${{ secrets.WXPUSHER_APPTOKEN }}
+          WXPUSHER_UID: ${{ secrets.WXPUSHER_UID }}
         run: python send_weather.py
