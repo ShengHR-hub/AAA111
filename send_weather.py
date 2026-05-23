@@ -12,7 +12,7 @@ from datetime import datetime
 
 # ---- 配置（通过 GitHub Secrets 注入） ----
 APP_TOKEN = os.environ["WXPUSHER_APPTOKEN"]
-UID = os.environ["WXPUSHER_UID"]
+TOPIC_ID = "44623"  # 主题ID，家人扫码订阅后都能收到
 CITY = "遵化"
 
 
@@ -70,7 +70,7 @@ def send_message(content):
         "appToken": APP_TOKEN,
         "content": content,
         "contentType": 3,
-        "uids": [UID],
+        "topicIds": [int(TOPIC_ID)],
         "summary": f"遵化市天气预报 {datetime.now().strftime('%m-%d')}",
     }
     try:
